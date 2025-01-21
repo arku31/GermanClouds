@@ -20,7 +20,7 @@ class WeatherDataControllerTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        
+
         $this->weatherDataService = app(GetWeatherDataService::class);
         $this->city = City::factory()->create();
     }
@@ -45,31 +45,22 @@ class WeatherDataControllerTest extends TestCase
             'cloudiness' => 5
         ];
         WeatherData::factory(2)->createMany([$sample1, $sample2]);
-      
+
         $response = $this->getJson("/api/cities/".$this->city->id."/weather?date_from={$dateFrom}&date_to={$dateTo}");
 
         $response->assertStatus(200);
-        $response->assertJsonFragment($sample1);          
+        $response->assertJsonFragment($sample1);
         $response->assertJsonFragment($sample2);
     }
 
     public function test_show_works_without_dates()
     {
-        // Подготовка
-        
-        $expectedData = [
-            ['temperature_min' => 20, 'temperature_max' => 22, 'date' => '2024-03-20']
-        ];
-        WeatherData::factory()->create([
-            'city_id' => $this->city->id,
-            'date' => '2024-03-20',
-            'temperature_min' => 20,
-            'temperature_max' => 22
-        ]);
+        $expectedData = ['city_id' => $this->city->id, 'temperature_min' => 20, 'temperature_max' => 22, 'date' => '2024-03-20'];
+        WeatherData::factory()->create($expectedData);
 
         $response = $this->getJson("/api/cities/".$this->city->id."/weather");
 
         $response->assertStatus(200)
-            ->assertJson($expectedData);
+            ->assertJsonFragment($expectedData);
     }
-} 
+}

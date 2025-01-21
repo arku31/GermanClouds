@@ -1,66 +1,71 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+This is a fun project that I've developed just today.
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+The copy of DB that contains the data between 21.01.24 and 21.01.25 is included. Just copy it from the root folder to `database` folder
 
-## About Laravel
+You may also access it here - https://clouds.igorweb.dev/api/weather?with=aggregations or https://project-w.fly.dev/api/weather?with=aggregations
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+The list of cities is available on `/api/cities`. One city weather can be requested via e.g. `/api/cities/Hamburg/weather`
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Unfortunately, Stuttgart/Leipzig/Dresden got rate limited but so far the winner as the less clouded city is *Berlin*. I didn't expect that!
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
-
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
-
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
-
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
-
-## Laravel Sponsors
-
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```
+[
+    {
+        "city_id": 1,
+        "city_name": "Freiburg",
+        "avg_cloudiness": 70.32177595628416,
+        "avg_min_temperature": 8.876174863387975,
+        "avg_max_temperature": 16.863825136612025,
+        "entities_count": 366
+    },
+    {
+        "city_id": 2,
+        "city_name": "Hamburg",
+        "avg_cloudiness": 48.05352459016393,
+        "avg_min_temperature": 7.937021857923502,
+        "avg_max_temperature": 14.927377049180338,
+        "entities_count": 366
+    },
+    {
+        "city_id": 3,
+        "city_name": "Lübeck",
+        "avg_cloudiness": 49.86030054644809,
+        "avg_min_temperature": 7.602650273224046,
+        "avg_max_temperature": 14.712240437158478,
+        "entities_count": 366
+    },
+    {
+        "city_id": 4,
+        "city_name": "Berlin",
+        "avg_cloudiness": 39.82412568306011,
+        "avg_min_temperature": 8.794480874316942,
+        "avg_max_temperature": 16.49516393442622,
+        "entities_count": 366
+    },
+    {
+        "city_id": 5,
+        "city_name": "Munich",
+        "avg_cloudiness": 71.28415300546447,
+        "avg_min_temperature": 6.899480874316949,
+        "avg_max_temperature": 15.65245901639345,
+        "entities_count": 366
+    },
+    {
+        "city_id": 6,
+        "city_name": "Düsseldorf",
+        "avg_cloudiness": 49.19008196721311,
+        "avg_min_temperature": 9.446612021857923,
+        "avg_max_temperature": 16.219480874316943,
+        "entities_count": 366
+    },
+    {
+        "city_id": 7,
+        "city_name": "Frankfurt",
+        "avg_cloudiness": 45.36079234972677,
+        "avg_min_temperature": 9.115792349726767,
+        "avg_max_temperature": 16.519781420765035,
+        "entities_count": 366
+    }
+]
+```

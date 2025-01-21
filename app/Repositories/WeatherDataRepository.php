@@ -8,7 +8,7 @@ class WeatherDataRepository
 {
     public function getWeatherDataFromDb(array $cities, ?Carbon $dateFrom = null, ?Carbon $dateTo = null)
     {
-        $query = \App\Models\WeatherData::query();
+        $query = \App\Models\WeatherData::with('city');
 
         if ($cities) {
             $query->whereIn('city_id', $cities);
