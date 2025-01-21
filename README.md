@@ -4,6 +4,12 @@ The copy of DB that contains the data between 21.01.24 and 21.01.25 is included.
 
 You may also access it here - https://clouds.igorweb.dev/api/weather?with=aggregations or https://project-w.fly.dev/api/weather?with=aggregations
 
+Available parameters:
+- with=aggregations,data. Be careful, your browser may hang if you include data
+- date_from=21.01.24. Please note that live version have no data before that point
+- date_to=21.01.25. Please note that live version have no data after that point
+- cities=1,2,3
+
 The list of cities is available on `/api/cities`. One city weather can be requested via e.g. `/api/cities/Hamburg/weather`
 
 Unfortunately, Stuttgart/Leipzig/Dresden got rate limited but so far the winner as the less clouded city is *Berlin*. I didn't expect that!
