@@ -12,7 +12,7 @@ class ImportCities extends Command
      *
      * @var string
      */
-    protected $signature = 'app:import-cities';
+    protected $signature = 'app:import-cities {--cities=default : Comma separated list of city IDs or names, or "default"}';
 
     /**
      * The console command description.
@@ -29,13 +29,21 @@ class ImportCities extends Command
     public function handle()
     {
         $importCitiesService = app(ImportCitiesService::class);
+        $cities = $this->option('cities') === 'default'
+            ? self::CITY_NAMES
+            : explode(',', $this->option('cities'));
 
-        foreach (self::CITY_NAMES as $cityName) {
-            $city = $importCitiesService->importCity($cityName);
-            if ($city) {
+        foreach ($cities as $cityName) {
+            $city = $importCitiesService->importCityIfNotExists($cityName);
+            if ($city === null) {
+                $this->error("Failed to import city $cityName");
+                continue;
+            }
+
+            if ($city->wasRecentlyCreated) {
                 $this->info("City $cityName imported successfully");
             } else {
-                $this->error("Failed to import city $cityName");
+                $this->info("City $cityName already exists");
             }
         }
     }

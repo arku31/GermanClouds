@@ -1,8 +1,11 @@
-This is a fun project that I've developed just today.
+This is a fun project that I've developed just today. The time from idea to live version was about 6 hours.
+
+The goal of the project is to find the city with the least cloudy weather. Please note that this project do not reflect industry coding standards and is not meant to be used in production. It is fetching data via openweathermap.org API and simply calculating the average cloudiness, min and max temperature.
 
 The copy of DB that contains the data between 21.01.24 and 21.01.25 is included. Just copy it from the root folder to `database` folder
 
-You may also access it here - https://clouds.igorweb.dev/api/weather?with=aggregations or https://project-w.fly.dev/api/weather?with=aggregations
+You may also access it here - https://clouds.igorweb.dev/api/weather?with=aggregations
+Please note that the live version is running on demand and may take a few seconds until the first request is processed.
 
 Available parameters:
 - with=aggregations,data. Be careful, your browser may hang if you include data
@@ -12,7 +15,7 @@ Available parameters:
 
 The list of cities is available on `/api/cities`. One city weather can be requested via e.g. `/api/cities/Hamburg/weather`
 
-Unfortunately, Stuttgart/Leipzig/Dresden got rate limited but so far the winner as the less clouded city is *Berlin*. I didn't expect that!
+So far the winner as the less clouded city is *Berlin*. I didn't expect that!
 
 
 ```
@@ -71,6 +74,30 @@ Unfortunately, Stuttgart/Leipzig/Dresden got rate limited but so far the winner 
         "avg_cloudiness": 45.36079234972677,
         "avg_min_temperature": 9.115792349726767,
         "avg_max_temperature": 16.519781420765035,
+        "entities_count": 366
+    },
+    {
+        "city_id": 8,
+        "city_name": "Stuttgart",
+        "avg_cloudiness": 42.5707650273224,
+        "avg_min_temperature": 8.39224043715847,
+        "avg_max_temperature": 16.853114754098375,
+        "entities_count": 366
+    },
+    {
+        "city_id": 9,
+        "city_name": "Leipzig",
+        "avg_cloudiness": 42.61939890710383,
+        "avg_min_temperature": 8.395054644808743,
+        "avg_max_temperature": 16.67374316939892,
+        "entities_count": 366
+    },
+    {
+        "city_id": 10,
+        "city_name": "Dresden",
+        "avg_cloudiness": 40.113251366120224,
+        "avg_min_temperature": 8.327486338797815,
+        "avg_max_temperature": 16.94863387978142,
         "entities_count": 366
     }
 ]

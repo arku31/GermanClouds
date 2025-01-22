@@ -13,7 +13,7 @@ class ImportData extends Command
      *
      * @var string
      */
-    protected $signature = 'app:import-data';
+    protected $signature = 'app:import-data {--cities=all : Comma separated list of city IDs or names, or "all"}';
 
     /**
      * The console command description.
@@ -28,7 +28,12 @@ class ImportData extends Command
     public function handle()
     {
         $dataService = app(ImportDataService::class);
-        $cities = City::all();
+
+        $cities = City::query()
+            ->when($this->option('cities') !== 'all', function($query) {
+                $query->whereIn('id', explode(',', $this->option('cities')));
+            })
+            ->get();
         $this->info("Importing weather data for {$cities->count()} cities");
         foreach ($cities as $city) {
             $dataService->importWeatherData($city);

@@ -14,8 +14,12 @@ class ImportCitiesService
         $this->weatherRepository = $weatherRepository;
     }
 
-    public function importCity(string $cityName): ?City 
+    public function importCityIfNotExists(string $cityName): ?City 
     {
+        $city = City::where('name', $cityName)->first();
+        if ($city) {
+            return $city;
+        }
         $response = $this->weatherRepository->getCityCoordinates(
             $cityName,
             'DE'
