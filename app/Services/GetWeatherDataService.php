@@ -19,10 +19,8 @@ class GetWeatherDataService
         return collect([
             'aggregations' => [
                 'by_city' => $weatherData->groupBy('city_id')->map(function($cityData, $cityId) {
-                    $cityName = $cityData->first()->city->name ?? null;
                     return [
-                        'city_id' => $cityId,
-                        'city_name' => $cityName,
+                        'city' => $cityData->first()->city,
                         'avg_cloudiness' => $cityData->avg('cloudiness'),
                         'avg_min_temperature' => $cityData->avg('temperature_min'),
                         'avg_max_temperature' => $cityData->avg('temperature_max'),

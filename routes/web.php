@@ -1,10 +1,7 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use Livewire\Volt\Volt;
 
-Route::get('/', function () {
-    return view('welcome');
-});
 
 use App\Http\Controllers\CityController;
 use App\Http\Controllers\WeatherDataController;
@@ -17,3 +14,4 @@ if (env('APP_ENV') === 'production') {
     Route::apiResource('api/cities', CityController::class);
 }
 Route::get('api/cities/{city}/weather', [WeatherDataController::class, 'show']);
+Volt::route('/', 'weather-map');
