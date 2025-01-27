@@ -6,7 +6,12 @@ document.addEventListener('livewire:initialized', function () {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
 
-    Livewire.on('citiesLoaded', function([cities]) {
+    Livewire.on('citiesLoaded', function([cities, dateFrom, dateTo]) {
+        map.eachLayer((layer) => {
+            if (layer instanceof L.Marker) {
+                map.removeLayer(layer);
+            }
+        });
         cities.forEach(function(city) {
             L.marker([city.city.lat, city.city.lon])
                 .addTo(map)

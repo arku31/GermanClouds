@@ -24,11 +24,11 @@
                 <div class="mb-4">
                 </div>
                 <div class="grid grid-cols-2 gap-2">
-                    <x-button class="w-full">Зима</x-button>
-                    <x-button class="w-full">Весна</x-button>
-                    <x-button class="w-full">Лето</x-button>
-                    <x-button class="w-full">Осень</x-button>
-                    <x-button class="w-full col-span-2">Год целиком</x-button>
+                    <x-button wire:click="setWinter" class="w-full {{ $selectedSeason === 'winter' ? 'bg-green-700' : 'bg-gray-100' }}">Зима</x-button>
+                    <x-button wire:click="setSpring" class="w-full {{ $selectedSeason === 'spring' ? 'bg-green-700' : 'bg-gray-100' }}">Весна</x-button>
+                    <x-button wire:click="setSummer" class="w-full {{ $selectedSeason === 'summer' ? 'bg-green-700' : 'bg-gray-100' }}">Лето</x-button>
+                    <x-button wire:click="setAutumn" class="w-full {{ $selectedSeason === 'autumn' ? 'bg-green-700' : 'bg-gray-100' }}">Осень</x-button>
+                    <x-button wire:click="setFullYear" class="w-full col-span-2 {{ $selectedSeason === 'full' ? 'bg-green-700' : 'bg-gray-100' }}">Год целиком</x-button>
                 </div>
             </div>
 
